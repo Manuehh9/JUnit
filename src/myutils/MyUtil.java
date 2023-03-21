@@ -10,8 +10,20 @@ package myutils;
  */
 public class MyUtil {
 
+    /**
+     *
+     * @param cadena Strint cadena que es vol invertir
+     * @return cadena invertida (null per cadenes nulls).
+     */
+
     public static String inverteix(String cadena) {
-        String resultat = "";
+        StringBuilder sb = new StringBuilder(cadena);
+        String resultat;
+        
+        sb.reverse();
+        resultat = sb.toString();
+        
+        System.out.println(resultat);
         return resultat;
     }
 
@@ -43,5 +55,5 @@ public class MyUtil {
             double resultat = numero * factorial(numero - 1);
             return resultat;
         }
-}
+    }
 }
