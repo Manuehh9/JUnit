@@ -4,43 +4,57 @@
  */
 package myutils;
 
+import java.util.Calendar;
+
 /**
  *
  * @author garci
  */
 public class MyUtil {
 
-    /**
-     *
-     * @param cadena Strint cadena que es vol invertir
-     * @return cadena invertida (null per cadenes nulls).
-     */
-
     public static String inverteix(String cadena) {
+        //Metodo invertir cadena de texto
         StringBuilder sb = new StringBuilder(cadena);
         String resultat;
-        
+
         sb.reverse();
         resultat = sb.toString();
-        
+
         System.out.println(resultat);
         return resultat;
     }
 
-    /**
-     *
-     * @param day int dia del naixement
-     * @param month int mes del naixement
-     * @param year int any del naixement
-     * @return edat de la persona, per edat>150 retorna -1, per dates
-     * impossibles retorna -2
-     *
-     */
     public static int edat(int day, int month, int year) {
-        int resultat = 0;
-        return resultat;
+        Calendar fechaActual = Calendar.getInstance();
+        Calendar fechaNacimiento = Calendar.getInstance();
+        fechaNacimiento.setLenient(false);
+                
+        try {
+            fechaNacimiento.set(year, month - 1, day); // Restar 1 al mes porque en Calendar los meses empiezan en 0
+            fechaNacimiento.getTime(); // Validar la fecha
+        } catch (IllegalArgumentException e) {
+            // La fecha es inválida
+            System.out.println("Fecha invalida");
+            return -2;
+        }
+        
+        int edad = fechaActual.get(Calendar.YEAR) - fechaNacimiento.get(Calendar.YEAR);
+        if (fechaActual.get(Calendar.MONTH) < fechaNacimiento.get(Calendar.MONTH)) {
+            edad--;
+        } else if (fechaActual.get(Calendar.MONTH) == fechaNacimiento.get(Calendar.MONTH)
+                && fechaActual.get(Calendar.DAY_OF_MONTH) < fechaNacimiento.get(Calendar.DAY_OF_MONTH)) {
+            edad--;
+        }
+        // Verificar que la edad sea válida
+        if (edad > 150) {
+            // La edad es mayor a 150 años
+            System.out.println("Datos incorrectos no puedes tener mas de 150 años!!!");
+            return -1;
+        } else {
+            System.out.println(edad);
+            return edad;
+        }
     }
-
     /**
      *
      * @param numero número del que es calcula el factorial

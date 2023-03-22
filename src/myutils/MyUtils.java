@@ -17,6 +17,9 @@ public class MyUtils {
         //Cadena invertida
         MyUtil.inverteix("HOLA");
         
+        //Edad mediante la fecha de nacimiento
+        MyUtil.edat(2, 9, 2004);   
+        
     }
     
 }
