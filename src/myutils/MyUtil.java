@@ -28,7 +28,7 @@ public class MyUtil {
         Calendar fechaActual = Calendar.getInstance();
         Calendar fechaNacimiento = Calendar.getInstance();
         fechaNacimiento.setLenient(false);
-                
+
         try {
             fechaNacimiento.set(year, month - 1, day); // Restar 1 al mes porque en Calendar los meses empiezan en 0
             fechaNacimiento.getTime(); // Validar la fecha
@@ -37,7 +37,7 @@ public class MyUtil {
             System.out.println("Fecha invalida");
             return -2;
         }
-        
+
         int edad = fechaActual.get(Calendar.YEAR) - fechaNacimiento.get(Calendar.YEAR);
         if (fechaActual.get(Calendar.MONTH) < fechaNacimiento.get(Calendar.MONTH)) {
             edad--;
@@ -55,19 +55,19 @@ public class MyUtil {
             return edad;
         }
     }
-    /**
-     *
-     * @param numero número del que es calcula el factorial
-     * @return retorna el factorial d'un número. Si el nombre es negatiu retorna
-     * -1.
-     */
-    public static double factorial(double numero) {
 
-        if (numero == 0) {
-            return 1;
+    public static double factorial(double numero) {
+        if (numero < 0) {
+            return -1; // si el numero es negativo, se retorna -1
+        } else if (numero == 0) {
+            return 1; // si el numero es cero, se retorna 1
         } else {
-            double resultat = numero * factorial(numero - 1);
-            return resultat;
+            double factorial = 1;
+            for (int i = 1; i <= numero; i++) {
+                factorial *= i;
+            }
+            System.out.println(factorial);
+            return factorial;
         }
     }
 }
