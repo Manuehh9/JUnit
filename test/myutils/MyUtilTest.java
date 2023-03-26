@@ -23,7 +23,6 @@ public class MyUtilTest {
         String expResult = "ALOH";
         String result = MyUtil.inverteix(cadena);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
 
