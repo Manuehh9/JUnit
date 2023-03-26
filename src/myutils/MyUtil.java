@@ -21,7 +21,13 @@ public class MyUtil {
         resultat = sb.toString();
 
         System.out.println(resultat);
-        return resultat;
+        
+        if (resultat != null) {
+            return resultat;
+        }else{
+            return null;
+        }
+        
     }
 
     public static int edat(int day, int month, int year) {
