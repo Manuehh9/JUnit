@@ -14,14 +14,21 @@ public class MyUtil {
 
     public static String inverteix(String cadena) {
         //Metodo invertir cadena de texto
+        
+        //Crear stringbuilder con el parametro que queremos invertir
         StringBuilder sb = new StringBuilder(cadena);
         String resultat;
 
+        //Invertimos la cadena guardada en el stringbuilder
+        // y lo guardamos en resultat
         sb.reverse();
         resultat = sb.toString();
 
+        //mostramos la variable
         System.out.println(resultat);
         
+        //La devolvemos en caso de no ser nula
+        //en caso de serlo se devuelve un null
         if (resultat != null) {
             return resultat;
         }else{
@@ -31,19 +38,26 @@ public class MyUtil {
     }
 
     public static int edat(int day, int month, int year) {
+        //Declaramos las variable y usamos Calendar.getInstance()
+        //representa la fecha y la hora actuales. 
         Calendar fechaActual = Calendar.getInstance();
         Calendar fechaNacimiento = Calendar.getInstance();
+        
+        //Impide fechas invalidas
         fechaNacimiento.setLenient(false);
 
         try {
-            fechaNacimiento.set(year, month - 1, day); // Restar 1 al mes porque en Calendar los meses empiezan en 0
-            fechaNacimiento.getTime(); // Validar la fecha
+            //Se Resta 1 al mes porque en Calendar los meses empiezan en 0
+            fechaNacimiento.set(year, month - 1, day);
+            // Validar la fecha
+            fechaNacimiento.getTime(); 
         } catch (IllegalArgumentException e) {
             // La fecha es inválida
             System.out.println("Fecha invalida");
             return -2;
         }
 
+        //Se calcula la edad restando fecha actual a la fecha de nacimiento
         int edad = fechaActual.get(Calendar.YEAR) - fechaNacimiento.get(Calendar.YEAR);
         if (fechaActual.get(Calendar.MONTH) < fechaNacimiento.get(Calendar.MONTH)) {
             edad--;
@@ -63,11 +77,15 @@ public class MyUtil {
     }
 
     public static double factorial(double numero) {
+        
         if (numero < 0) {
-            return -1; // si el numero es negativo, se retorna -1
+            //Si el numero es negativo, se devuelve -1
+            return -1;
         } else if (numero == 0) {
-            return 1; // si el numero es cero, se retorna 1
+            //Si el numero es 0, se devuelve 1
+            return 1;
         } else {
+            //Si el numero es mayor a 0, se devuelve se devuelve el factorial
             double factorial = 1;
             for (int i = 1; i <= numero; i++) {
                 factorial *= i;

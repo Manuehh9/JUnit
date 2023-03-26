@@ -20,6 +20,7 @@ public class MyUtils {
         //Edad mediante la fecha de nacimiento
         MyUtil.edat(2, 9, 2004);   
         
+        //Calcular factorial
         MyUtil.factorial(5);
     }
     
